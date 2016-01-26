@@ -1,0 +1,5 @@
+
+Changes for CLX:
+
+in Makefile, add at beginning:
+CXX=bfin-linux-uclibc-g++

@@ -1,0 +1,51 @@
+
+Mosquitto mqtt broker application, CLX build
+
+Mosquitto has no configuration utility.  The config.mk file has been modified:
+
+Added:
+CC = bfin-linux-uclibc-gcc
+CXX = bfin-linux-uclibc-g++
+AR = bfin-linux-uclibc-ar
+STRIP = bfin-linux-uclibc-strip
+LIB_SUFFIX = /../../lib
+
+Changed:
+WITH_TLS_PSK:=no 	(openSSL < 1.0 won't work with pre-shared keys)
+WITH_PYTHON:=no 	(no Python on CLX)
+
+(The bfin compiler doesn't seem to handle the linker script.  Remove from lib build)
+ifneq ($(UNAME),SunOS)
+#	LIB_LDFLAGS:=$(LIB_LDFLAGS) -Wl,--version-script=linker.version -Wl,-soname,libmosquitto.so.$(SOVERSION)
+	LIB_LDFLAGS:=$(LIB_LDFLAGS)  -Wl,-soname,libmosquitto.so.$(SOVERSION)
+endif
+
+To build:
+make
+make install            (Installs the libraries and header files into the toolchain)
+
+The following libaries are install in the toolchain at runtime/lib:
+libmosquitto.so.1      (C library)
+libmosquittopp.so.1    (C++ library)
+
+The following include files are install in the toolchain at runtime/usr/include:
+mosquitto_plugin.h    (C header for creating Mosquitto athentication plugins)
+mosquitto.h	      (C header)
+mosquittopp.h	      (C++ header)
+
+The following applications are built.
+These do not get automatically installed into the CLX. To use, copy to directory clx/extras/disk/usr/bin.
+
+client/mosquitto_sub 	   (Mosquitto subscription example)
+client/mosquitto_pub	   (Mosquitto publish example)
+src/mosquitto		   (Main broker application)
+src/mosquitto_passwd	   (Application to manage mosquitto password files)
+
+The following example files are in included. Mosquitto.conf is required for CLX.
+If desired, copy these to directory clx/extras/disk/etc/mosquitto
+pwfile.example	      	    		(password example file)
+pskfile.example				(psk example file)
+aclfile.example				(Access control example file)
+mosquitto/mosquitto.conf.example	(Mosquitto.conf example file
+
+Ron Weiland, 8/15/2014

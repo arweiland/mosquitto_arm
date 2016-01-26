@@ -1,0 +1,55 @@
+set -e; for d in lib client src; do make -C ${d}; done
+make[1]: Entering directory `/home/rweiland/code/indyme/clx/mosquitto_svn/lib'
+make -C cpp
+make[2]: Entering directory `/home/rweiland/code/indyme/clx/mosquitto_svn/lib/cpp'
+make[2]: Nothing to be done for `all'.
+make[2]: Leaving directory `/home/rweiland/code/indyme/clx/mosquitto_svn/lib/cpp'
+make -C python
+make[2]: Entering directory `/home/rweiland/code/indyme/clx/mosquitto_svn/lib/python'
+make[2]: Nothing to be done for `all'.
+make[2]: Leaving directory `/home/rweiland/code/indyme/clx/mosquitto_svn/lib/python'
+make[1]: Leaving directory `/home/rweiland/code/indyme/clx/mosquitto_svn/lib'
+make[1]: Entering directory `/home/rweiland/code/indyme/clx/mosquitto_svn/client'
+make[1]: Nothing to be done for `all'.
+make[1]: Leaving directory `/home/rweiland/code/indyme/clx/mosquitto_svn/client'
+make[1]: Entering directory `/home/rweiland/code/indyme/clx/mosquitto_svn/src'
+make[1]: Nothing to be done for `all'.
+make[1]: Leaving directory `/home/rweiland/code/indyme/clx/mosquitto_svn/src'
+set -e; for d in lib client src; do make -C ${d} install; done
+make[1]: Entering directory `/home/rweiland/code/indyme/clx/mosquitto_svn/lib'
+make -C cpp
+make[2]: Entering directory `/home/rweiland/code/indyme/clx/mosquitto_svn/lib/cpp'
+make[2]: Nothing to be done for `all'.
+make[2]: Leaving directory `/home/rweiland/code/indyme/clx/mosquitto_svn/lib/cpp'
+make -C python
+make[2]: Entering directory `/home/rweiland/code/indyme/clx/mosquitto_svn/lib/python'
+make[2]: Nothing to be done for `all'.
+make[2]: Leaving directory `/home/rweiland/code/indyme/clx/mosquitto_svn/lib/python'
+install -d FIN_TOOLCHAIN_RUN_PATH/usr/local/lib/
+install -s --strip-program=bfin-linux-uclibc-strip libmosquitto.so.1 FIN_TOOLCHAIN_RUN_PATH/usr/local/lib/libmosquitto.so.1
+ln -sf libmosquitto.so.1 FIN_TOOLCHAIN_RUN_PATH/usr/local/lib/libmosquitto.so
+install -d FIN_TOOLCHAIN_RUN_PATH/usr/local/include/
+install mosquitto.h FIN_TOOLCHAIN_RUN_PATH/usr/local/include/mosquitto.h
+make -C cpp install
+make[2]: Entering directory `/home/rweiland/code/indyme/clx/mosquitto_svn/lib/cpp'
+install -d FIN_TOOLCHAIN_RUN_PATH/usr/local/lib/
+install -s --strip-program=bfin-linux-uclibc-strip libmosquittopp.so.1 FIN_TOOLCHAIN_RUN_PATH/usr/local/lib/libmosquittopp.so.1
+ln -sf libmosquittopp.so.1 FIN_TOOLCHAIN_RUN_PATH/usr/local/lib/libmosquittopp.so
+install -d FIN_TOOLCHAIN_RUN_PATH/usr/local/include/
+install mosquittopp.h FIN_TOOLCHAIN_RUN_PATH/usr/local/include/mosquittopp.h
+make[2]: Leaving directory `/home/rweiland/code/indyme/clx/mosquitto_svn/lib/cpp'
+make -C python install
+make[2]: Entering directory `/home/rweiland/code/indyme/clx/mosquitto_svn/lib/python'
+make[2]: Nothing to be done for `install'.
+make[2]: Leaving directory `/home/rweiland/code/indyme/clx/mosquitto_svn/lib/python'
+make[1]: Leaving directory `/home/rweiland/code/indyme/clx/mosquitto_svn/lib'
+make[1]: Entering directory `/home/rweiland/code/indyme/clx/mosquitto_svn/client'
+install -d FIN_TOOLCHAIN_RUN_PATH/usr/local/bin
+install -s --strip-program=bfin-linux-uclibc-strip mosquitto_pub FIN_TOOLCHAIN_RUN_PATH/usr/local/bin/mosquitto_pub
+install -s --strip-program=bfin-linux-uclibc-strip mosquitto_sub FIN_TOOLCHAIN_RUN_PATH/usr/local/bin/mosquitto_sub
+make[1]: Leaving directory `/home/rweiland/code/indyme/clx/mosquitto_svn/client'
+make[1]: Entering directory `/home/rweiland/code/indyme/clx/mosquitto_svn/src'
+install -d FIN_TOOLCHAIN_RUN_PATH/usr/local/sbin
+install -s --strip-program=bfin-linux-uclibc-strip mosquitto FIN_TOOLCHAIN_RUN_PATH/usr/local/sbin/mosquitto
+install mosquitto_plugin.h FIN_TOOLCHAIN_RUN_PATH/usr/local/include/mosquitto_plugin.h
+make[1]: Leaving directory `/home/rweiland/code/indyme/clx/mosquitto_svn/src'
