@@ -39,8 +39,8 @@ WITH_TLS:=yes
 # Comment out to disable TLS/PSK support in the broker and client. Requires
 # WITH_TLS=yes.
 # This must be disabled if using openssl < 1.0.
-#WITH_TLS_PSK:=yes
-WITH_TLS_PSK:=no
+WITH_TLS_PSK:=yes
+#WITH_TLS_PSK:=no
 
 # Comment out to disable client client threading support.
 WITH_THREADING:=yes
@@ -82,7 +82,7 @@ WITH_SYS_TREE:=yes
 
 # Build with Python module. Comment out if Python is not installed, or required
 # Python modules are not available.
-#WITH_PYTHON:=yes
+WITH_PYTHON:=yes
 
 # Build with SRV lookup support.
 WITH_SRV:=yes
